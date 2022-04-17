@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {%block title %} {{name}} | Account Activation {% endblock %} {% block body %}
+<div class="container container_wrapper">
+    <div class="acct_wrapper">
+        <div class="wp_mobile_dir_btn">
+            <a href="{{ url_for('auth.login') }}">
+                <li class="fa fa-arrow-left"></li>
+            </a>
+        </div>
+        <div class="acct_title">
+            <h1>Activate your Flex Account</h1>
+            <div class="sub_title">Let setup your flex account</div>
+            <div class="descr">You will have full access to your account after completing the steps</div>
+        </div>
+        <div class="activate_acct_wrapper">
+            <form name="login_form">
+                <div class="inputmainwrapper">
+                    <label class="input_label" for="username" style="font-weight: 500;">Registration Number <span style="color:red; font-size:15px">*</span></label>
+                    <div class="input_container">
+                        <span class="fa fa-user"></span><input type="text" name="username" class="activate_input" placeholder="Enter Username" required/>
+                    </div>
+                </div>
+
+                <div class="inputmainwrapper">
+                    <label class="input_label" for="username" style="font-weight: 500;">Mobile Number<span style="color:red; font-size:15px">*</span></label>
+                    <div class="input_container" style="margin-bottom: 0px !important;">
+                        <span class="fa fa-mobile"></span><input type="number" name="telephone" class="activate_input" placeholder="Enter Mobile Number" max="11" min="11" maxlength="11" minlength="11" required/>
+                    </div>
+                </div>
+                <figcaption>A One-time-password will be sent to the phone number</figcaption>
+
+                <div class="error">
+
+                </div>
+
+
+                <button type="button" class="btn" id="activateBtn">Activate Account</button>
+
+                <div class="activate_acct mobile_fa">
+                    <a href="{{ url_for('auth.login') }}">
+                        <div>
+                            <li class="fa fa-arrow-left-long"></li> Back to Login</div>
+                    </a>
+                </div>
+            </form>
+            <div class="foot_note">
+                Having trouble completing any of the steps? make a report to your school
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="{{url_for('static', filename='/js/app.js')}}" async defer></script>
+{% endblock body %}

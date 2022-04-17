@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {%block title %} Smarter way to manage your school {% endblock %} {% block body %}
+<header>
+    <div logo_container>
+        <img src="{{ url_for('static', filename='img/logo.png')}}" alt="">
+        <span>{{name}}</span>
+    </div>
+</header>
+<div class="container">
+    <div class="col_l col_mobile">
+        <div class="wrap_img">
+            <img src="{{ url_for('static', filename='img/Boy-Header-1024x805.png')}}" alt="big_banner">
+        </div>
+    </div>
+    <div class="col_2">
+        <div class="login_container">
+            <form name="login_form">
+                <h1>Sign in to {{name | title}}</h1>
+                <div class="inputmainwrapper">
+                    <label class="input_label" for="username">Student Registration Number</label>
+                    <div class="input_container">
+                        <span class="fa fa-user"></span><input type="text" name="username" placeholder="Enter Username" class="login_input" required/>
+                    </div>
+                    <div class="input_inline_error"></div>
+                </div>
+
+                <div class="inputmainwrapper">
+                    <label class="input_label" for="username">Password</label>
+                    <div class="input_container">
+                        <span class="fa fa-lock"></span><input type="password" name="password" placeholder="Enter Password" class="login_input" required/>
+                    </div>
+                    <div class="input_inline_error"></div>
+                </div>
+
+                <div class="wrap_remember_me">
+                    <div>
+                        <input type="checkbox" name="remember_me" id="remember_me" />
+                        <label for="remember_me">Remember me</label>
+                    </div>
+                    <div class="forgotpassword">
+                        <a href="#">Forgot password?</a>
+                    </div>
+
+                </div>
+                <button type="button" class="btn" id="loginBtn">Login to Account</button>
+                <div class="activate_acct">
+                    <a href="{{ url_for('auth.activate_account') }}">
+                        <div>
+                            <li class="fa fa-lock"></li> Activate your account</div>
+                    </a>
+                </div>
+            </form>
+        </div>
+        <div class="mobile_component">
+            <div class="barcode">
+                <img src="{{ url_for('static', filename='/img/qr-code.png')}}" alt="Scan to Download" title="Scan to Download">
+            </div>
+            <div class="instore">
+                <img src="{{ url_for('static', filename='/img/download_playstore.png')}}" alt="Download from Playstore">
+            </div>
+            <div class="instore">
+                <img src="{{ url_for('static', filename='/img/download_appstore.png') }}" alt="Download From Appstore">
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script src="{{url_for('static', filename='/js/app.js')}}" async defer></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% endblock %}

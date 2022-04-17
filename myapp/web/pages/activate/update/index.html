@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {%block title %} {{name}} | Account Activation {% endblock %} {% block body %}
+<div class="container container_wrapper animate__slideInRight">
+    <div class="acct_wrapper">
+        <div class="wp_mobile_dir_btn">
+            <a href="{{ url_for('auth.login') }}">
+                <li class="fa fa-arrow-left"></li>
+            </a>
+        </div>
+        <div class="acct_title">
+            <h1>Mobile Number Verification</h1>
+            <div class="sub_title">Let setup your flex account</div>
+            <div class="descr"><b style="font-family: Arial !important;">Hi {{data['person']['surname']}} {{data['person']['firstname']}}</b>, a six digit verification code was sent to <b style="font-family: Arial !important;"> {{data['SMSMessageData']['Recipients'][0]['number']}}</b></div>
+        </div>
+        <div class="activate_acct_wrapper">
+            <form name="login_form">
+
+                <div class="inputmainwrapper">
+                    <label class="input_label" for="username" style="font-weight: 500;">Verification Code<span style="color:red; font-size:15px">*</span></label>
+                    <div class="input_container" style="margin-bottom: 0px !important;">
+                        <span class="fa fa-mobile"></span><input type="number" name="verify_code" class="activate_code" placeholder="OTP" max="6" min="6" value="{{data['code']}}" required/>
+                    </div>
+                </div>
+
+                <div class="error">
+
+                </div>
+
+
+                <button type="button" class="btn" id="verifybtn">Verify</button>
+
+                <div class="resend_otp">
+                    <div class="resend_notice">Don't recieve the OTP?</div>
+                    <br>
+
+                    <div class="resend_btns">
+                        <a href="#">
+                            <div>
+                                <li class="fa fa-message"></li> RESEND OTP</div>
+                        </a>
+                        <a href="#">
+                            <div>
+                                <li class="fa fa-phone"></li> CALL</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="activate_acct mobile_fa">
+                    <a href="{{ url_for('auth.login') }}">
+                        <div>
+                            <li class="fa fa-arrow-left-long"></li> Back to Login</div>
+                    </a>
+                </div>
+
+            </form>
+            <div class="foot_note">
+                Having trouble completing any of the steps? make a report to your school
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="{{url_for('static', filename='/js/app.js')}}" async defer></script>
+{% endblock body %}
