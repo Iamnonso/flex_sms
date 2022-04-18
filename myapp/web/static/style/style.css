@@ -26,21 +26,35 @@ a {
     padding: 5px;
 }
 
+.alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    background-color: #fdf6f6;
+    border-color: #de7575;
+    color: #c20707;
+}
+
 .error_msg {
-    color: #a12e12;
+    color: #c20707;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0em;
     text-align: left;
     margin-bottom: 15px;
-    background-color: #efc6c6;
+    background-color: #fdf6f6;
     padding: 15px;
+    border: 1px solid #de7575;
     border-radius: 2px;
     animation: flash 1s ease-in-out 1;
 }
 
 .error_msg span {
-    color: #a12e12;
+    color: #c20707;
     padding-right: 8px;
 }
 

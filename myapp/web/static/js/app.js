@@ -62,8 +62,8 @@ $(function() {
         } else {
             // if validation failed
             error.innerHTML = `<div class="error_msg" id="error_msg">
-                            <span class="fa fa-warning"></span>There are some errors in your form
-                            <li class="fa fa-close err-close" data-id="error_msg" onclick="clostbtn()"></li>
+                            There are some errors in your form
+                            <li class="fa fa-close err-close" data-id="error_msg" onclick="clostbtn('error_msg')"></li>
                         </div>`;
         }
 
@@ -94,24 +94,24 @@ $(function() {
                 } else {
                     // if login failed
                     error.innerHTML = `<div class="error_msg" id="error_msg">
-            <span class="fa fa-warning"></span><span>${data.message}</span>
-            <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn()"></li>
+            <span>${data.message}</span>
+            <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn('error_msg')"></li>
             </div>`;
 
                 }
             }).fail(function(data) {
                 $('#activateBtn').html('Activate Account');
                 error.innerHTML = `<div class="error_msg" id="error_msg">
-            <span class="fa fa-warning"></span><span>!Request failed unexpectedly, try again</span>
-            <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn()"></li>
+            <span>!Request failed unexpectedly, try again</span>
+            <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn('error_msg')"></li>
             </div>`;
             });
 
         } else {
             // if validation failed
             error.innerHTML = `<div class="error_msg" id="error_msg">
-            <span class="fa fa-warning"></span><span>There are some errors in your form</span>
-            <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn()"></li>
+            <span>There are some errors in your form</span>
+            <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn('error_msg')"></li>
             </div>`;
         }
 
@@ -120,12 +120,10 @@ $(function() {
 
 
 //close error message
-const clostbtn = () => {
-    const closeBtn = document.getElementsByClassName('err-close-btn')[0];
-
-    const parentElement = closeBtn.getAttribute('data-id');
-    const closeBtnParent = document.getElementById(parentElement);
+const clostbtn = (id) => {
+    const closeBtnParent = document.getElementById(id);
     closeBtnParent.style.display = 'none';
+
 }
 
 //actiavte code
@@ -136,8 +134,8 @@ $(function() {
         error.innerHTML = '';
         if (activateCode == '') {
             error.innerHTML = `<div class="error_msg" id="error_msg">
-            <span class="fa fa-warning"></span><span>Activation code can not be empty</span>
-            <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn()"></li>
+            <span>Activation code can not be empty</span>
+            <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn('error_msg')"></li>
             </div>`;
 
         } else {
@@ -156,16 +154,16 @@ $(function() {
                 } else {
                     // if login failed
                     error.innerHTML = `<div class="error_msg" id="error_msg">
-            <span class="fa fa-warning"></span><span>${data.message}</span>
-            <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn()"></li>
+                <span>${data.message}</span>
+            <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn('error_msg')"></li>
             </div>`;
 
                 }
             }).fail(function(data) {
                 $('#verifybtn').html('Verify');
                 error.innerHTML = `<div class="error_msg" id="error_msg">
-            <span class="fa fa-warning"></span><span>!Request failed unexpectedly, try again</span>
-            <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn()"></li>
+            <span>!Request failed unexpectedly, try again</span>
+            <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn('error_msg')"></li>
             </div>`;
             });
 
