@@ -10,9 +10,20 @@ body {
     scrollbar-width: thin;
 }
 
+header {
+    background-color: #EFF3FF;
+}
+
 a {
     text-decoration: none;
     color: #1B73BF;
+}
+
+.input_inline_error {
+    color: #a12e12;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px;
 }
 
 .error_msg {

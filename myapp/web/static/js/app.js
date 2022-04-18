@@ -10,7 +10,8 @@ validateLogin = function(data) {
     return errors;
 };
 //
-const error = document.getElementsByClassName("error")[0];
+
+const error = document.getElementsByClassName("error")[0]; //use as global var
 const userInput = document.getElementsByClassName('login_input');
 const errorOutput = document.getElementsByClassName('input_inline_error');
 for (let i = 0; i < userInput.length; i++) {
