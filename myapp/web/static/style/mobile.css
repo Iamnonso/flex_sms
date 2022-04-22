@@ -219,6 +219,7 @@
     .wp_mobile_dir_btn {
         display: block;
         padding: 10px;
+        padding-top: 6px;
     }
     
     .wp_mobile_dir_btn a {
@@ -226,7 +227,7 @@
     }
     
     .acct_title {
-        padding-bottom: 10px;
+        padding-bottom: 7px;
     }
     
     .acct_title h1 {
