@@ -231,7 +231,7 @@
     
     .acct_title h1 {
         font-weight: 700;
-        font-size: 27px;
+        font-size: 30px;
         padding: 2px 0px 0px 0px;
         color: #2665AF;
         margin-bottom: 4px;
@@ -240,7 +240,7 @@
     
     .acct_title .sub_title {
         color: #464343;
-        font-size: 15px;
+        font-size: 17px;
         font-weight: 600;
         letter-spacing: 0em;
         text-align: left;
@@ -249,7 +249,7 @@
     }
     
     .acct_title .descr {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 300;
         line-height: 1.5;
         text-align: left;
@@ -278,6 +278,7 @@
     
     .activate_acct_wrapper input {
         background-color: #fff;
+        padding: 3px;
     }
     
     .mobile_fa {

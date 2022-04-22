@@ -8,10 +8,11 @@ body {
     padding-bottom: 0px;
     text-decoration: none;
     scrollbar-width: thin;
+    color: rgb(49, 70, 89)
 }
 
 header {
-    background-color: #EFF3FF;
+    background-color: #EFF3FF !important;
 }
 
 a {

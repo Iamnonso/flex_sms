@@ -20,6 +20,7 @@ def login():
         password = request.form['password']
         location = myhelpers.userLocation()
         
+        
         try:
             cursor = mysql.connection.cursor()
             cursor.execute('SELECT * FROM students INNER JOIN student_acct ON students.studentid=student_acct.userid WHERE studentid= %s', [username])
