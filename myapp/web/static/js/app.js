@@ -90,7 +90,7 @@ $(function() {
                 $('#activateBtn').html('Activate Account');
                 if (data.status == 200) {
                     // if login success
-                    window.location.href = '/activate/verify';
+                    //window.location.href = '/activate/verify';
                 } else {
                     // if login failed
                     error.innerHTML = `<div class="error_msg" id="error_msg">
