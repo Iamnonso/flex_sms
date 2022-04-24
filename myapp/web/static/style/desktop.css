@@ -392,7 +392,7 @@ label[for="remember_me"] {
     font-weight: 400;
 }
 
-.reg_form {
+.reg_form .forms {
     padding-top: 15px;
     display: flex;
     flex-direction: row;
