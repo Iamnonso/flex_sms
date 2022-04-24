@@ -40,11 +40,11 @@
                     </div>
                     <div class="form_wrap">
                         <label for="firstname">Firstname <span>*</span></label>
-                        <input name="surname" type="text" placeholder="Enter Firstname" />
+                        <input name="surname" type="text" placeholder="Enter Firstname" value="{{ data['person'].firstname }}" />
                     </div>
                     <div class="form_wrap">
                         <label for="othername">Othername</label>
-                        <input name="surname" type="text" placeholder="Enter Othername" />
+                        <input name="surname" type="text" placeholder="Enter Othername" value="{{ data['person'].othername}}" />
                     </div>
 
                     <div class="form_wrap">
@@ -72,7 +72,7 @@
 
                     <div class="form_wrap">
                         <label for="dob">Date of Birth <span>*</span></label>
-                        <input name="surname" type="date" placeholder="dd/mm/yyyy" />
+                        <input name="surname" type="date" placeholder="dd/mm/yyyy" value="{{ data['person'].dob}}" />
                     </div>
 
                     <div class="form_wrap">
