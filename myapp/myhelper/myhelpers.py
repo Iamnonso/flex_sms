@@ -1,5 +1,7 @@
 import re
-import json
+import json, requests
+from urllib import response
+from wsgiref import headers
 from urllib.request import urlopen
 import bcrypt
 import os
@@ -16,6 +18,50 @@ def userLocation():
     except:
         return 'none'
 
+#get authorization token
+def fetch_auth_token():
+    try:
+        url = 'https://www.universal-tutorial.com/api/getaccesstoken'
+        headers = {
+            "Accept": "application/json",
+            'api-token': 'dZ53GQV312pF3cHcOfEVr86dWrJrCOWW_j_IxUaZjsJuqfgCJZEQ6aShudFJ00dvtoY',
+            "user-email": "madugbaemmanuel@gmail.com"
+            }
+        response = requests.get(url, headers=headers)
+        return response.json()
+    except:
+        return 'none'
+
+ 
+#get countries
+def countries():
+    try:
+        token = fetch_auth_token()
+        auth_token = token['auth_token']
+        url = 'https://www.universal-tutorial.com/api/countries'
+        headers = {
+            "Authorization": f"Bearer {auth_token}",
+            "Accept": "application/json"
+        }
+        response = requests.get(url, headers=headers)
+        return response.json()
+    except:
+        return 'none'
+
+def user_state(country):
+    try:
+        token = fetch_auth_token()
+        auth_token = token['auth_token']
+        url = f'https://www.universal-tutorial.com/api/states/{country}'
+        headers = {
+            "Authorization": f"Bearer {auth_token}",
+            "Accept": "application/json"
+        } 
+        response = requests.get(url, headers=headers)
+        return response.json()  
+    except:
+        return 'none'
+    
 #hash password
 def hashpassword (password):
     return bcrypt.hashpw(password, bcrypt.gensalt())
@@ -53,3 +99,4 @@ def verify_with_call(telephone):
     number = '+234{}'.format(telephone[1:] if telephone.startswith('0') else telephone)
     app_key = os.environ.get('AFRICA_TALK_API')
     app_username = os.environ.get('AFRICA_TALK_USERNAME')
+    

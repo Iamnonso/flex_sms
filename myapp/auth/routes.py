@@ -148,4 +148,5 @@ def update_user_data():
                 'status': 401
             }
     else:
-        return render_template('/pages/activate/update/index.html', name=os.environ['APP_NAME'], data=session.get('data'))
+        user_state = myhelpers.user_state('Nigeria')
+        return render_template('/pages/activate/update/index.html', name=os.environ['APP_NAME'], data=session.get('data'), states=user_state)
