@@ -100,10 +100,9 @@ $(function() {
 
                 }
             }).fail(function(data) {
-                console.log(data)
                 $('#activateBtn').html('Activate Account');
                 error.innerHTML = `<div class="error_msg" id="error_msg">
-            <span>!Request failed unexpectedly, try again</span>
+            <span>Request failed unexpectedly, try again</span>
             <li class="fa fa-close err-close-btn" data-id="error_msg" onclick="clostbtn('error_msg')"></li>
             </div>`;
             });

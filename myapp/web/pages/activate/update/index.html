@@ -23,78 +23,79 @@
                     <b>Note:</b> <span>The information supply in this form is accessible to the school, flix and our partner</span>
                 </div>
                 <div class="reg_form">
-                    <div class="wrap_radio_btn">
-                        <div class="radio_btn">
-                            {% if data['person'].gender =='Male' %}
-                            <input type="radio" name="gender" value="Male" checked/> {% else %}
-                            <input type="radio" name="gender" value="Male" /> {% endif %}
-                            <span>Male</span>
+                    <div id="bio-data">
+                        <div class="wrap_radio_btn">
+                            <div class="radio_btn">
+                                {% if data['person'].gender =='Male' %}
+                                <input type="radio" name="gender" value="Male" checked/> {% else %}
+                                <input type="radio" name="gender" value="Male" /> {% endif %}
+                                <span>Male</span>
+                            </div>
+                            <div class="radio_btn">
+                                {% if data['person'].gender == 'Female'%}
+                                <input type="radio" name="gender" value="Female" checked/> {% else %}
+                                <input type="radio" name="gender" value="Female" /> {%endif%}
+                                <span>Female</span>
+                            </div>
                         </div>
-                        <div class="radio_btn">
-                            {% if data['person'].gender == 'Female'%}
-                            <input type="radio" name="gender" value="Female" checked/> {% else %}
-                            <input type="radio" name="gender" value="Female" /> {%endif%}
-                            <span>Female</span>
+
+                        <div class="form_wrap">
+                            <label for="surname">Surname/Lastname <span>*</span></label>
+                            <input name="surname" type="text" placeholder="Enter Surname" value="{{ data['person'].surname }}" />
                         </div>
-                    </div>
+                        <div class="form_wrap">
+                            <label for="firstname">Firstname <span>*</span></label>
+                            <input name="surname" type="text" placeholder="Enter Firstname" value="{{ data['person'].firstname }}" />
+                        </div>
+                        <div class="form_wrap">
+                            <label for="othername">Othername</label>
+                            <input name="surname" type="text" placeholder="Enter Othername" value="{{ data['person'].othername}}" />
+                        </div>
 
-                    <div class="form_wrap">
-                        <label for="surname">Surname/Lastname <span>*</span></label>
-                        <input name="surname" type="text" placeholder="Enter Surname" value="{{ data['person'].surname }}" />
-                    </div>
-                    <div class="form_wrap">
-                        <label for="firstname">Firstname <span>*</span></label>
-                        <input name="surname" type="text" placeholder="Enter Firstname" value="{{ data['person'].firstname }}" />
-                    </div>
-                    <div class="form_wrap">
-                        <label for="othername">Othername</label>
-                        <input name="surname" type="text" placeholder="Enter Othername" value="{{ data['person'].othername}}" />
-                    </div>
-
-                    <div class="form_wrap">
-                        <label for="State">State <span>*</span></label>
-                        <select name="state" id="stud_state">
+                        <div class="form_wrap">
+                            <label for="State">State <span>*</span></label>
+                            <select name="state" id="stud_state">
                         <option>Select Your State</option>
                         {% for state in states %}
                         <option value="{{state.state_name}}">{{state.state_name}}</option>
                         {% endfor %}
                     </select>
-                        <span class="loaders">Please wait...</span>
-                    </div>
+                        </div>
 
-                    <div class="form_wrap">
-                        <label for="State">LGA <span>*</span></label>
-                        <select name="lga" id="stud_lga">
+                        <div class="form_wrap">
+                            <label for="State">LGA <span>*</span></label>
+                            <select name="lga" id="stud_city">
                         <option>Select Your LGA</option>
                     </select>
+                        </div>
+
+                        <div class="form_wrap">
+                            <label for="email">Email</label>
+                            <input name="surname" type="email" placeholder="Enter Email" />
+                        </div>
+
+                        <div class="form_wrap">
+                            <label for="dob">Date of Birth <span>*</span></label>
+                            <input name="surname" type="date" placeholder="dd/mm/yyyy" value="{{ data['person'].dob}}" />
+                        </div>
+
+                        <div class="form_wrap">
+                            <label for="address">Contact Address <span>*</span></label>
+                            <input name="surname" type="text" placeholder="Enter Contact Address" />
+                        </div>
+
+                        <div class="form_wrap">
+                            <label for="busstop">Bus Stop <span>*</span></label>
+                            <input name="surname" type="email" placeholder="Enter Nearest Bus Stop" />
+                        </div>
+
+
                     </div>
-
-                    <div class="form_wrap">
-                        <label for="email">Email</label>
-                        <input name="surname" type="email" placeholder="Enter Email" />
-                    </div>
-
-                    <div class="form_wrap">
-                        <label for="dob">Date of Birth <span>*</span></label>
-                        <input name="surname" type="date" placeholder="dd/mm/yyyy" value="{{ data['person'].dob}}" />
-                    </div>
-
-                    <div class="form_wrap">
-                        <label for="address">Contact Address <span>*</span></label>
-                        <input name="surname" type="text" placeholder="Enter Contact Address" />
-                    </div>
-
-                    <div class="form_wrap">
-                        <label for="busstop">Bus Stop <span>*</span></label>
-                        <input name="surname" type="email" placeholder="Enter Nearest Bus Stop" />
-                    </div>
-
-
                 </div>
-
             </div>
 
         </div>
 </section>
 <script src="{{url_for('static', filename='/js/app.js')}}" async defer></script>
+<script src="{{url_for('static', filename='/js/worker.js')}}" async defer></script>
 {% endblock body %}
