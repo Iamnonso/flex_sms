@@ -25,7 +25,9 @@
                 <div class="reg_form">
                     <div class="wrap_radio_btn">
                         <div class="radio_btn">
-                            <input type="radio" name="gender" value="Male" />
+                            {% if data['person']['gender'] =='Male'}
+                            <input type="radio" name="gender" value="Male" checked/> {%else%}
+                            <input type="radio" name="gender" value="Male" /> {% endif %}
                             <span>Male</span>
                         </div>
                         <div class="radio_btn">
