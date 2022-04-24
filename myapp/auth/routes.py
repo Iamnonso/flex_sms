@@ -1,5 +1,6 @@
 from logging import error
 import os
+from urllib import response
 from myapp.app import mysql
 from flask import Blueprint, redirect, url_for, request, render_template, jsonify, flash, session
 from ..myhelper import myhelpers
@@ -98,7 +99,29 @@ def activate_account():
     else:
         return render_template('/pages/activate/index.html', name=os.environ['APP_NAME'])
 
-
+#Get cities Route
+@blueprint.route('/cities/<state>', methods=['GET'])
+def cities(state):
+    try:
+        response = myhelpers.cities(state)
+        if response == 'none':
+            return {
+                'message': 'Success',
+                'status': 200,
+                'response': response
+            }
+        else:
+            return {
+                'message': 'Error fetching data!',
+                'status': 500
+            }
+    except:
+        return {
+            'message': "an unexpect error occured",
+            'status': 500
+        }
+        
+        
 #Forgot Password Routes
 @blueprint.route('/forgot_password')
 def for_password():

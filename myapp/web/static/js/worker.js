@@ -7,7 +7,7 @@ selectState.addEventListener('change', (event) => {
     const state = selectState.value;
     selectCity.innerHTML = '<option value="">Please wait...</option>';
     $.ajax({
-        url: `https://www.universal-tutorial.com/api/cities/${state}`,
+        url: `/cities/${state}`,
         type: 'GET',
         dataType: 'json',
         success: (data) => {

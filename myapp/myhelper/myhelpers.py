@@ -48,6 +48,7 @@ def countries():
     except:
         return 'none'
 
+#State list
 def user_state(country):
     try:
         token = fetch_auth_token()
@@ -62,6 +63,22 @@ def user_state(country):
     except:
         return 'none'
     
+    
+def cities(state):
+    try:
+        token = fetch_auth_token()
+        auth_token = token['auth_token']
+        url = f'https://www.universal-tutorial.com/api/cities/{state}'
+        headers = {
+            "Authorization": f"Bearer {auth_token}",
+            "Accept": "application/json"
+        } 
+        response = requests.get(url, headers=headers)
+        return response.json()  
+    except:
+        return 'none'
+    
+
 #hash password
 def hashpassword (password):
     return bcrypt.hashpw(password, bcrypt.gensalt())
