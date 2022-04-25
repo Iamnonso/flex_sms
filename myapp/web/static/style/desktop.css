@@ -472,3 +472,10 @@ label[for="remember_me"] {
     font-size: 14px;
     margin-top: 15px;
 }
+
+.back_btn {
+    background-color: #fff;
+    border: 1px solid #9CBCE1;
+    color: #2665AF;
+    margin-right: 10px;
+}
