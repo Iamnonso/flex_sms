@@ -104,7 +104,7 @@ def activate_account():
 def cities(state):
     try:
         response = myhelpers.cities(state)
-        if response == 'none':
+        if response != 'none':
             return {
                 'message': 'Success',
                 'status': 200,
