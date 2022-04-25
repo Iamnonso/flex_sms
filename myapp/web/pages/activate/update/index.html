@@ -23,107 +23,108 @@
                     <b>Note:</b> <span>The information supply in this form is accessible to the school, flix and our partner</span>
                 </div>
                 <div class="reg_form">
+                    <form>
+                        <div id="bio-data" class="forms">
 
-                    <div id="bio-data" class="forms">
-                        <div class="wrap_radio_btn">
-                            <div class="radio_btn">
-                                {% if data['person'].gender =='Male' %}
-                                <input type="radio" name="gender" value="Male" checked/> {% else %}
-                                <input type="radio" name="gender" value="Male" /> {% endif %}
-                                <span>Male</span>
+                            <div class="wrap_radio_btn">
+                                <div class="radio_btn">
+                                    {% if data['person'].gender =='Male' %}
+                                    <input type="radio" name="gender" value="Male" checked/> {% else %}
+                                    <input type="radio" name="gender" value="Male" /> {% endif %}
+                                    <span>Male</span>
+                                </div>
+                                <div class="radio_btn">
+                                    {% if data['person'].gender == 'Female'%}
+                                    <input type="radio" name="gender" value="Female" checked/> {% else %}
+                                    <input type="radio" name="gender" value="Female" /> {%endif%}
+                                    <span>Female</span>
+                                </div>
                             </div>
-                            <div class="radio_btn">
-                                {% if data['person'].gender == 'Female'%}
-                                <input type="radio" name="gender" value="Female" checked/> {% else %}
-                                <input type="radio" name="gender" value="Female" /> {%endif%}
-                                <span>Female</span>
+
+                            <div class="form_wrap">
+                                <label for="surname">Surname/Lastname <span>*</span></label>
+                                <input name="surname" type="text" placeholder="Enter Surname" value="{{ data['person'].surname }}" required/>
                             </div>
-                        </div>
+                            <div class="form_wrap">
+                                <label for="firstname">Firstname <span>*</span></label>
+                                <input name="surname" type="text" placeholder="Enter Firstname" value="{{ data['person'].firstname }}" required/>
+                            </div>
+                            <div class="form_wrap">
+                                <label for="othername">Othername</label>
+                                <input name="surname" type="text" placeholder="Enter Othername" value="{{ data['person'].othername}}" />
+                            </div>
 
-                        <div class="form_wrap">
-                            <label for="surname">Surname/Lastname <span>*</span></label>
-                            <input name="surname" type="text" placeholder="Enter Surname" value="{{ data['person'].surname }}" required/>
-                        </div>
-                        <div class="form_wrap">
-                            <label for="firstname">Firstname <span>*</span></label>
-                            <input name="surname" type="text" placeholder="Enter Firstname" value="{{ data['person'].firstname }}" required/>
-                        </div>
-                        <div class="form_wrap">
-                            <label for="othername">Othername</label>
-                            <input name="surname" type="text" placeholder="Enter Othername" value="{{ data['person'].othername}}" />
-                        </div>
-
-                        <div class="form_wrap">
-                            <label for="State">State <span>*</span></label>
-                            <select name="state" id="stud_state" required>
+                            <div class="form_wrap">
+                                <label for="State">State <span>*</span></label>
+                                <select name="state" id="stud_state" required>
                         <option>Select Your State</option>
                         {% for state in states %}
                         <option value="{{state.state_name}}">{{state.state_name}}</option>
                         {% endfor %}
                     </select>
-                        </div>
+                            </div>
 
-                        <div class="form_wrap">
-                            <label for="State">City <span>*</span></label>
-                            <select name="lga" id="stud_city" required>
+                            <div class="form_wrap">
+                                <label for="State">City <span>*</span></label>
+                                <select name="lga" id="stud_city" required>
                         <option>Select City</option>
                     </select>
-                        </div>
-
-                        <div class="form_wrap">
-                            <label for="email">Email</label>
-                            <input name="surname" type="email" placeholder="Enter Email" required/>
-                        </div>
-
-                        <div class="form_wrap">
-                            <label for="dob">Date of Birth <span>*</span></label>
-                            <input name="surname" type="date" placeholder="dd/mm/yyyy" value="{{ data['person'].dob}}" required/>
-                        </div>
-
-                        <div class="form_wrap">
-                            <label for="address">Contact Address <span>*</span></label>
-                            <input name="surname" type="text" placeholder="Enter Contact Address" required/>
-                        </div>
-
-                        <div class="form_wrap">
-                            <label for="busstop">Bus Stop <span>*</span></label>
-                            <input name="surname" type="email" placeholder="Enter Nearest Bus Stop" required/>
-                        </div>
-
-                    </div>
-
-                    <!--Health Data-->
-                    <div id="health-data" class="forms health-data">
-                        <div class="wrap_radio_btn">
-                            <div class="healthcondition" style="color:#314659 !important">Does Your Child has any Health Condition the School should know?</div>
-                            <div class="radio_btn">
-                                <input type="radio" name="health" value="True" onclick="healthCheck(this.value)" />
-                                <span>Yes</span>
                             </div>
-                            <div class="radio_btn">
-                                <input type="radio" name="health" value="False" onclick="healthCheck(this.value)" />
-                                <span>No</span>
+
+                            <div class="form_wrap">
+                                <label for="email">Email</label>
+                                <input name="surname" type="email" placeholder="Enter Email" required/>
                             </div>
+
+                            <div class="form_wrap">
+                                <label for="dob">Date of Birth <span>*</span></label>
+                                <input name="surname" type="date" placeholder="dd/mm/yyyy" value="{{ data['person'].dob}}" required/>
+                            </div>
+
+                            <div class="form_wrap">
+                                <label for="address">Contact Address <span>*</span></label>
+                                <input name="surname" type="text" placeholder="Enter Contact Address" required/>
+                            </div>
+
+                            <div class="form_wrap">
+                                <label for="busstop">Bus Stop <span>*</span></label>
+                                <input name="surname" type="email" placeholder="Enter Nearest Bus Stop" required/>
+                            </div>
+
                         </div>
 
-                        <div class="form_wrap">
-                            <label for="surname">Health Condition <span>*</span></label>
-                            <textarea name="healthconditionstatement" id="healthconditionstatement" disabled placeholder=" Enter Student Health Condition">
+                        <!--Health Data-->
+                        <div id="health-data" class="forms health-data">
+                            <div class="wrap_radio_btn">
+                                <div class="healthcondition" style="color:#314659 !important">Does Your Child has any Health Condition the School should know?</div>
+                                <div class="radio_btn">
+                                    <input type="radio" name="health" value="True" onclick="healthCheck(this.value)" />
+                                    <span>Yes</span>
+                                </div>
+                                <div class="radio_btn">
+                                    <input type="radio" name="health" value="False" onclick="healthCheck(this.value)" />
+                                    <span>No</span>
+                                </div>
+                            </div>
+
+                            <div class="form_wrap">
+                                <label for="surname">Health Condition <span>*</span></label>
+                                <textarea name="healthconditionstatement" id="healthconditionstatement" disabled placeholder=" Enter Student Health Condition">
                             </textarea>
-                        </div>
-                        <div class="form_wrap">
-                            <label for="firstname">Genotype <span>*</span></label>
-                            <input name="surname" type="text" placeholder="Enter Genotype" required/>
-                        </div>
-                        <div class="form_wrap">
-                            <label for="othername">Emergency Contact</label>
-                            <input name="surname" type="number" placeholder="Enter Emergency Contact" />
+                            </div>
+                            <div class="form_wrap">
+                                <label for="firstname">Genotype <span>*</span></label>
+                                <input name="surname" type="text" placeholder="Enter Genotype" required/>
+                            </div>
+                            <div class="form_wrap">
+                                <label for="othername">Emergency Contact</label>
+                                <input name="surname" type="number" placeholder="Enter Emergency Contact" />
+                            </div>
+
                         </div>
 
-                    </div>
-
-                    <button class="btn back_btn"><li class="fa fa-arrow-left"></li> Back</button> <button class="btn primary">Next <li class="fa fa-arrow-right"></li></button>
-
+                        <button class="btn back_btn"><li class="fa fa-arrow-left"></li> Back</button> <button class="btn primary">Next <li class="fa fa-arrow-right"></li></button>
+                    </form>
                 </div>
             </div>
 
