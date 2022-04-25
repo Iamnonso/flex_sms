@@ -392,7 +392,7 @@ label[for="remember_me"] {
     font-weight: 400;
 }
 
-.reg_form .forms .health-data {
+.reg_form .forms {
     padding-top: 15px;
     display: flex;
     flex-direction: row;
@@ -401,11 +401,6 @@ label[for="remember_me"] {
 }
 
 .health-data {
-    padding-top: 15px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
     display: none;
 }
 

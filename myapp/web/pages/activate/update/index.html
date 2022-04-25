@@ -93,7 +93,70 @@
                     </div>
 
                     <!--Health Data-->
+                    <div id="health-data" class="forms health-data">
+                        <div class="wrap_radio_btn">
+                            <div>Does Your Child has any Health Condition the School should know?</div>
+                            <div class="radio_btn">
+                                <input type="radio" name="health" value="True" />
+                                <span>Yes</span>
+                            </div>
+                            <div class="radio_btn">
+                                <input type="radio" name="health" value="False" />
+                                <span>No</span>
+                            </div>
+                        </div>
 
+                        <div class="form_wrap">
+                            <label for="surname">Surname/Lastname <span>*</span></label>
+                            <input name="surname" type="text" placeholder="Enter Surname" value="{{ data['person'].surname }}" required/>
+                        </div>
+                        <div class="form_wrap">
+                            <label for="firstname">Firstname <span>*</span></label>
+                            <input name="surname" type="text" placeholder="Enter Firstname" value="{{ data['person'].firstname }}" required/>
+                        </div>
+                        <div class="form_wrap">
+                            <label for="othername">Othername</label>
+                            <input name="surname" type="text" placeholder="Enter Othername" value="{{ data['person'].othername}}" />
+                        </div>
+
+                        <div class="form_wrap">
+                            <label for="State">State <span>*</span></label>
+                            <select name="state" id="stud_state" required>
+                        <option>Select Your State</option>
+                        {% for state in states %}
+                        <option value="{{state.state_name}}">{{state.state_name}}</option>
+                        {% endfor %}
+                    </select>
+                        </div>
+
+                        <div class="form_wrap">
+                            <label for="State">City <span>*</span></label>
+                            <select name="lga" id="stud_city" required>
+                        <option>Select City</option>
+                    </select>
+                        </div>
+
+                        <div class="form_wrap">
+                            <label for="email">Email</label>
+                            <input name="surname" type="email" placeholder="Enter Email" required/>
+                        </div>
+
+                        <div class="form_wrap">
+                            <label for="dob">Date of Birth <span>*</span></label>
+                            <input name="surname" type="date" placeholder="dd/mm/yyyy" value="{{ data['person'].dob}}" required/>
+                        </div>
+
+                        <div class="form_wrap">
+                            <label for="address">Contact Address <span>*</span></label>
+                            <input name="surname" type="text" placeholder="Enter Contact Address" required/>
+                        </div>
+
+                        <div class="form_wrap">
+                            <label for="busstop">Bus Stop <span>*</span></label>
+                            <input name="surname" type="email" placeholder="Enter Nearest Bus Stop" required/>
+                        </div>
+
+                    </div>
 
                     <button class="btn back_btn"><li class="fa fa-arrow-left"></li> Back</button> <button class="btn primary">Next <li class="fa fa-arrow-right"></li></button>
 
