@@ -9,7 +9,6 @@ selectState.addEventListener('change', (event) => {
     $.ajax({
         url: `/cities/${state}`,
         type: 'GET',
-        dataType: 'json',
         success: (data) => {
             console.log(data.response);
             const cities = data.response;
