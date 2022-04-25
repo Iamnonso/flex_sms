@@ -10,7 +10,6 @@ selectState.addEventListener('change', (event) => {
         url: `/cities/${state}`,
         type: 'GET',
         success: (data) => {
-            console.log(data.response);
             const cities = data.response;
             selectCity.innerHTML = '<option value="">Select City</option>';
             cities.forEach(city => {
@@ -26,8 +25,4 @@ selectState.addEventListener('change', (event) => {
             console.log(error);
         }
     });
-
-
-
-
 });
