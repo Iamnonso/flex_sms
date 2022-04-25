@@ -466,9 +466,8 @@ label[for="remember_me"] {
 }
 
 .btn {
-    width: 136px;
+    width: 120px;
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
-    padding: 15px 10px 15px 10px;
+    font-size: 14px;
 }
