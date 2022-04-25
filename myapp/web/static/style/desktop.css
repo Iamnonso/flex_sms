@@ -392,12 +392,16 @@ label[for="remember_me"] {
     font-weight: 400;
 }
 
-.reg_form .forms {
+.reg_form .forms .health-data {
     padding-top: 15px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.health-data {
+    display: none;
 }
 
 .form_wrap {
@@ -478,4 +482,5 @@ label[for="remember_me"] {
     border: 1.5px solid #9CBCE1;
     color: #2665AF;
     margin-right: 10px;
+    display: none;
 }
