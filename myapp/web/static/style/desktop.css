@@ -434,8 +434,7 @@ label[for="remember_me"] {
 }
 
 .form_wrap textarea {
-    width: 600px;
-    height: 300px;
+    width: 100%;
     background: #F6F6F6;
     border: 1px solid #9CBCE1;
     box-sizing: border-box;
