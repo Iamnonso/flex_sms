@@ -12,11 +12,12 @@ selectState.addEventListener('change', (event) => {
         dataType: 'json',
         success: (data) => {
             console.log(data);
+            const cities = data.response;
             selectCity.innerHTML = '<option value="">Select City</option>';
-            data.forEach(state_name => {
+            cities.forEach(city_name => {
                 const option = document.createElement('option');
-                option.value = state_name;
-                option.textContent = state_name;
+                option.value = city_name;
+                option.textContent = city_name;
                 selectCity.appendChild(option);
             });
         },
