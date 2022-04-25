@@ -13,10 +13,10 @@ selectState.addEventListener('change', (event) => {
             console.log(data.response);
             const cities = data.response;
             selectCity.innerHTML = '<option value="">Select City</option>';
-            cities.forEach(city_name => {
+            cities.forEach(city => {
                 const option = document.createElement('option');
-                option.value = city_name;
-                option.textContent = city_name;
+                option.value = city.city_name;
+                option.textContent = city.city_name;
                 selectCity.appendChild(option);
             });
         },
