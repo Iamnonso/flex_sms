@@ -26,3 +26,16 @@ selectState.addEventListener('change', (event) => {
         }
     });
 });
+
+//handle health checkbox
+const healthCheck = (health) = () => {
+    const healthStatement = document.getElementById('healthconditionstatement');
+    if (health == 'True') {
+        healthStatement.removeAttribute('disabled');
+        healthStatement.setAttribute('enabled', 'enabled');
+    } else {
+        healthStatement.setAttribute('disabled', 'disabled');
+        healthStatement.removeAttribute('enabled');
+    }
+
+}
