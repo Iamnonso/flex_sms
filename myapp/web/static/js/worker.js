@@ -31,11 +31,7 @@ selectState.addEventListener('change', (event) => {
 const healthCheck = (health) = () => {
     const healthStatement = document.getElementById('healthconditionstatement');
     if (health == 'True') {
-        healthStatement.removeAttribute('disabled');
-        healthStatement.setAttribute('enabled', 'enabled');
-    } else {
-        healthStatement.setAttribute('disabled', 'disabled');
-        healthStatement.removeAttribute('enabled');
+        healthStatement.toggleAttribute('enabled');
     }
-
+    console.log(health);
 }
