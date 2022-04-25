@@ -11,7 +11,7 @@ selectState.addEventListener('change', (event) => {
         type: 'GET',
         dataType: 'json',
         success: (data) => {
-            console.log(data);
+            console.log(data.response);
             const cities = data.response;
             selectCity.innerHTML = '<option value="">Select City</option>';
             cities.forEach(city_name => {
