@@ -401,6 +401,11 @@ label[for="remember_me"] {
 }
 
 .health-data {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
     display: none;
 }
 
