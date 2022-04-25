@@ -400,8 +400,9 @@ label[for="remember_me"] {
     justify-content: space-between;
 }
 
-.health-data {
-    display: none;
+.healthcondition {
+    font-size: 14px;
+    color: #314659
 }
 
 .form_wrap {
