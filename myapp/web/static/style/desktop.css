@@ -402,7 +402,7 @@ label[for="remember_me"] {
 
 .healthcondition {
     font-size: 14px;
-    color: #314659
+    color: #314659 !important
 }
 
 .form_wrap {
