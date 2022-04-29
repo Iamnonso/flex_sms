@@ -5,5 +5,6 @@
 </p>
 
 
-# flex_sms
-An automated learning and students data system
+## About
+
+[Filxsmsm] is an automated learning and school management system**.
