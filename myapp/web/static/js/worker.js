@@ -35,3 +35,13 @@ const healthCheck = (health) => {
     }
     console.log(health);
 }
+
+storeregistraationformdataasobject = () => {
+    const form = document.getElementById('storeregistraationform');
+    const formData = new FormData(form);
+    const formObject = {};
+    formData.forEach((value, key) => {
+        formObject[key] = value;
+    });
+    return formObject;
+}
