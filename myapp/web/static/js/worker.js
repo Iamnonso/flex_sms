@@ -28,7 +28,7 @@ selectState.addEventListener('change', (event) => {
 });
 
 //handle health checkbox
-const healthCheck = (health) = () => {
+const healthCheck = (health) => {
     const healthStatement = document.getElementById('healthconditionstatement');
     if (health == 'True') {
         healthStatement.toggleAttribute('enabled');
