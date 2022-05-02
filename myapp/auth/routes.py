@@ -157,7 +157,7 @@ def for_verify_code():
 
 #Reset Password Routes    
 @blueprint.route('/activate/updatepassword', methods=['GET', 'POST'])
-def update_user_data():
+def update_password():
     if request.method =='POST':
         #update user data
         password = request.form['password']
@@ -200,7 +200,7 @@ def update_user_data():
             firstname = request.form['firstname']
             lastname = request.form['lastname']
             othername = request.form['othername']
-            
+
         else:
             return{
                 'message': 'Invalid authication code',
