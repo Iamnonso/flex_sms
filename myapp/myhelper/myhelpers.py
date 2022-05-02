@@ -88,7 +88,7 @@ def hashpassword (password):
 def checkpassword(password, hashedpassword):
     return bcrypt.checkpw(password, hashedpassword)
 
-#Generate random number
+#Generate random number for verification
 def random_digits(n):
     range_start = 10**(n-1)
     range_end = (10**n)-1

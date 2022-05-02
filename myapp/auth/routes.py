@@ -30,10 +30,13 @@ def login():
             if response:
                if myhelpers.checkpassword(password, response['password']):
                     response.add(location)
+                    session['user'] = response #create session to store user data
+                    session['authication'] = myhelpers.get_uuid_id() #create authication token to be used for future requests
                     return {
                     'message': 'Success',
                     'status': 200,
-                    'response': response
+                    'response': response,
+                    'authication': session['authication']
                  }
                else:
                    return {
@@ -74,13 +77,16 @@ def activate_account():
         if response:
             sms = myhelpers.sendsms(telephone)
             sms['person'] = response #add user data to sms
+            session['authication'] = myhelpers.get_uuid_id() #create authication token to be used for future requests
             
+            #check if sms was sent
             if sms['SMSMessageData']['Recipients'][0]['status'] == 'Success':
                 session['data'] = sms
-                return{
+                return {
                     'message': 'Success',
                     'status': 200,
-                    'response': sms
+                    'response': sms,
+                    'authication': session['authication']
                 } 
             else:
                 #send sms failed
@@ -89,10 +95,10 @@ def activate_account():
                     'status': 500
                 }                   
         else:
+            #catch error
             return{
-                'message': 'User does not exist or is already activated',
-                'status': 401,
-                'response': response
+                'message': 'User does not exist or account already activated',
+                'status': 401
             } 
         
         
@@ -120,8 +126,10 @@ def cities(state):
             'message': "an unexpect error occured",
             'status': 500
         }
-        
 
+
+
+# UPDATE: verify OTP CODE
 @blueprint.route('/activate/verify', methods=['GET', 'POST'])
 def for_verify_code():
     if request.method =='POST':
@@ -129,9 +137,12 @@ def for_verify_code():
         code = request.form['code']
        
         if int(code) == session['data']['code']:
+            session['data']['code'] = None
+            session['authication'] = myhelpers.get_uuid_id()
             return{
                 'message': 'Success',
-                'status': 200
+                'status': 200,
+                'authication': session['authication']
             }
         else:
             return{
@@ -141,7 +152,9 @@ def for_verify_code():
             }
     else:
         return render_template('/pages/activate/verify/index.html', name=os.environ['APP_NAME'], data=session.get('data'))
-    
+
+
+
 #Reset Password Routes    
 @blueprint.route('/activate/updatepassword', methods=['GET', 'POST'])
 def update_user_data():
@@ -150,15 +163,23 @@ def update_user_data():
         password = request.form['password']
         confirm_password = request.form['confirm_password']
         if password == confirm_password:
-            #update password
-            cursor = mysql.connection.cursor()
-            cursor.execute('UPDATE student_acct SET password=%s WHERE userid=%s', [myhelpers.hashpassword(password), session['data']['person']['studentid']])
-            mysql.connection.commit()
-            cursor.close()
-            return{
-                'message': 'Success',
-                'status': 200
-            }
+
+            #check authication and update password
+           if request.form['authication'] == session['authication']:
+                #update password
+                cursor = mysql.connection.cursor()
+                cursor.execute('UPDATE student_acct SET password=%s WHERE userid=%s', [myhelpers.hashpassword(password), session['data']['person']['studentid']])
+                mysql.connection.commit()
+                cursor.close()
+                return{
+                    'message': 'Success',
+                    'status': 200
+                }
+           else:
+                return{
+                    'message': 'Invalid authication code',
+                    'status': 401
+                }
         else:
             return{
                 'message': 'Passwords do not match',
@@ -167,3 +188,24 @@ def update_user_data():
     else:
         user_state = myhelpers.user_state('Nigeria')
         return render_template('/pages/password/reset.html', name=os.environ['APP_NAME'], data=session.get('data'), states=user_state)
+
+
+#update student data
+@blueprint.route('/activate/update', methods=['GET', 'POST'])
+def update_user_data():
+    if request.method == 'POST':
+        authication = session.get('authication')
+        #update user data
+        if request.form('authication') == authication:
+            firstname = request.form['firstname']
+            lastname = request.form['lastname']
+            othername = request.form['othername']
+            
+        else:
+            return{
+                'message': 'Invalid authication code',
+                'status': 401
+            }
+     
+    else:
+      return render_template('/pages/activate/update/index.html', name=os.environ['APP_NAME'], data=session.get('data'), authication=authication)
