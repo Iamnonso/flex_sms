@@ -186,8 +186,7 @@ def update_password():
                 'status': 401
             }
     else:
-        user_state = myhelpers.user_state('Nigeria')
-        return render_template('/pages/password/reset.html', name=os.environ['APP_NAME'], data=session.get('data'), states=user_state)
+        return render_template('/pages/password/reset.html', name=os.environ['APP_NAME'], data=session.get('data'))
 
 
 #update student data
@@ -207,4 +206,5 @@ def update_user_data():
             }
      
     else:
-      return render_template('/pages/activate/update/index.html', name=os.environ['APP_NAME'], data=session.get('data'), authication=session.get('authication'))
+      user_state = myhelpers.user_state('Nigeria') 
+      return render_template('/pages/activate/update/index.html', name=os.environ['APP_NAME'], data=session.get('data'), authication=session.get('authication'), states=user_state)
