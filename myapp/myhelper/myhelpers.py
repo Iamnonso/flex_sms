@@ -7,6 +7,7 @@ import bcrypt
 import os
 from random import randint
 import africastalking
+import uuid
 
 #User location
 def userLocation():
@@ -116,4 +117,7 @@ def verify_with_call(telephone):
     number = '+234{}'.format(telephone[1:] if telephone.startswith('0') else telephone)
     app_key = os.environ.get('AFRICA_TALK_API')
     app_username = os.environ.get('AFRICA_TALK_USERNAME')
-    
+
+    # Initialize UUID
+def get_uuid_id():
+    return str(uuid.uuid4())

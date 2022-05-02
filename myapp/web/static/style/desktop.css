@@ -488,6 +488,15 @@ label[for="remember_me"] {
     margin-top: 15px;
 }
 
+.btn_primary{
+    border-radius: 4px;
+    background-color: #1B73BF;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
 .back_btn {
     background-color: #fff;
     border: 1.5px solid #9CBCE1;

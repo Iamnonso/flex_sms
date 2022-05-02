@@ -121,12 +121,6 @@ def cities(state):
             'status': 500
         }
         
-        
-#Forgot Password Routes
-@blueprint.route('/forgot_password')
-def for_password():
-    return 'Forgot Password'
-
 
 @blueprint.route('/activate/verify', methods=['GET', 'POST'])
 def for_verify_code():
@@ -148,8 +142,8 @@ def for_verify_code():
     else:
         return render_template('/pages/activate/verify/index.html', name=os.environ['APP_NAME'], data=session.get('data'))
     
-    
-@blueprint.route('/activate/update', methods=['GET', 'POST'])
+#Reset Password Routes    
+@blueprint.route('/activate/updatepassword', methods=['GET', 'POST'])
 def update_user_data():
     if request.method =='POST':
         #update user data
@@ -172,4 +166,4 @@ def update_user_data():
             }
     else:
         user_state = myhelpers.user_state('Nigeria')
-        return render_template('/pages/activate/update/index.html', name=os.environ['APP_NAME'], data=session.get('data'), states=user_state)
+        return render_template('/pages/password/reset.html', name=os.environ['APP_NAME'], data=session.get('data'), states=user_state)
