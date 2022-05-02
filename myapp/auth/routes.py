@@ -194,9 +194,8 @@ def update_password():
 @blueprint.route('/activate/update', methods=['GET', 'POST'])
 def update_user_data():
     if request.method == 'POST':
-        authication = session.get('authication')
         #update user data
-        if request.form('authication') == authication:
+        if request.form('authication') == session.get('authication'):
             firstname = request.form['firstname']
             lastname = request.form['lastname']
             othername = request.form['othername']
@@ -208,4 +207,4 @@ def update_user_data():
             }
      
     else:
-      return render_template('/pages/activate/update/index.html', name=os.environ['APP_NAME'], data=session.get('data'), authication=authication)
+      return render_template('/pages/activate/update/index.html', name=os.environ['APP_NAME'], data=session.get('data'), authication=session.get('authication'))
