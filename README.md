@@ -35,6 +35,6 @@ Mobile Number: 07054689979
 ```
 The verification code will be auto fill to easy testing, but the code will equally be sent to the recieving mobile number.
 
-#FIGMA MOCKUP CAN BE FOUND HERE(https://www.figma.com/file/EN70FNXLWukw8F4FwYPoo2/Code-Project?node-id=0%3A1)
+#FIGMA MOCKUP OF THE UI CAN BE FOUND HERE(https://www.figma.com/file/EN70FNXLWukw8F4FwYPoo2/Code-Project?node-id=0%3A1)
 
 
