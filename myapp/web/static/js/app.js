@@ -50,7 +50,7 @@ $(function() {
                 console.log(data)
                 if (data.status == 200) {
                     // if login success
-                    // window.location.href = '/dashboard';
+                    window.location.href = '/dashboard';
                 } else {
                     // if login failed
                     $('#loginBtn').html('Login to Account');

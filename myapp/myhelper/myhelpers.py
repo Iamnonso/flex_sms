@@ -123,4 +123,4 @@ def get_uuid_id():
     return str(uuid.uuid4())
 
 
-print(hashpassword('123456789'))
+#print(hashpassword('123456789'))
