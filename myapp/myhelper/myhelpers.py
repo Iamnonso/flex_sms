@@ -82,7 +82,7 @@ def cities(state):
 
 #hash password
 def hashpassword (password):
-    return bcrypt.hashpw(password, bcrypt.gensalt())
+    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
 #check password
 def checkpassword(password, hashedpassword):
@@ -121,3 +121,6 @@ def verify_with_call(telephone):
     # Initialize UUID
 def get_uuid_id():
     return str(uuid.uuid4())
+
+
+print(hashpassword('123456789'))

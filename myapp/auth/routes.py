@@ -208,3 +208,11 @@ def update_user_data():
     else:
       user_state = myhelpers.user_state('Nigeria') 
       return render_template('/pages/activate/update/index.html', name=os.environ['APP_NAME'], data=session.get('data'), authication=session.get('authication'), states=user_state)
+
+
+@blueprint.route('/dashboard', methods=['GET'])
+def dashboard():
+    if session.get('authication'):
+        return render_template('/pages/dashboard/index.html', name=os.environ['APP_NAME'], authication=session.get('authication'), data=session.get('user'))
+    else:
+        return redirect(url_for('auth.login'))
