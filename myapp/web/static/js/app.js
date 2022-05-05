@@ -54,8 +54,16 @@ $(function() {
                 } else {
                     // if login failed
                     $('#loginBtn').html('Login to Account');
+                    error.innerHTML = `<div class="error_msg" id="error_msg">
+                            ${data.message}
+                            <li class="fa fa-close err-close" data-id="error_msg" onclick="clostbtn('error_msg')"></li>
+                        </div>`;
                 }
             }).fail(function(data) {
+                error.innerHTML = `<div class="error_msg" id="error_msg">
+                            Unexcepted error occured, please try again.
+                            <li class="fa fa-close err-close" data-id="error_msg" onclick="clostbtn('error_msg')"></li>
+                        </div>`;
                 $('#loginBtn').html('Login to Account');
             });
 
