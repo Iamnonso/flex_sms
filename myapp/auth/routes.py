@@ -1,6 +1,5 @@
 from logging import error
 import os
-import bcrypt
 from urllib import response
 from myapp.app import mysql
 from flask import Blueprint, redirect, url_for, request, render_template, jsonify, flash, session
@@ -35,7 +34,7 @@ def login():
                 # Close connection
                 cur.close()
                 # Compare Passwords
-                if bcrypt.checkpw(password.encode('utf-8'), password_hash):
+                if myhelpers.checkpassword(password, password_hash.encode('utf-8')):
                     # Create session
                     data.add(location)
                     session['user'] = data #create session to store user data
