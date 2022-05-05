@@ -24,7 +24,7 @@ def login():
         
         try:
             cursor = mysql.connection.cursor()
-            cursor.execute('SELECT * FROM students INNER JOIN student_acct ON students.studentid=student_acct.userid WHERE studentid= %s', [username])
+            cursor.execute('SELECT * FROM students  WHERE studentid= %s', [username])
             response = cursor.fetchone()
             cursor.close()
             if response:
