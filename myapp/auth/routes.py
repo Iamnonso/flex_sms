@@ -26,6 +26,7 @@ def login():
             # Create cursor
             cur = mysql.connection.cursor()
             # Get user by username
+            # TODO: UPDATE QUERY TO FETCH USER BY EMAIL AND VALIDATE STATUS
             result = cur.execute("SELECT * FROM students INNER JOIN student_acct ON students.studentid=student_acct.userid WHERE students.studentid = %s", [username])
             if result > 0:
                 # Get stored hash
