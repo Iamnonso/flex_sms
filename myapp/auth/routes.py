@@ -36,7 +36,7 @@ def login():
                 # Compare Passwords
                 if myhelpers.checkpassword(password, password_hash):
                     # Create session
-                    data.add(location)
+                    data['location'] = location
                     session['user'] = data #create session to store user data
                     session['authication'] = myhelpers.get_uuid_id() #create authication token to be used for future requests
                     return {
