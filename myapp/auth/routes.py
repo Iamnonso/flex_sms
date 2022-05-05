@@ -34,7 +34,7 @@ def login():
                 # Close connection
                 cur.close()
                 # Compare Passwords
-                if myhelpers.checkpassword(password, password_hash.encode('utf-8')):
+                if myhelpers.checkpassword(password, password_hash):
                     # Create session
                     data.add(location)
                     session['user'] = data #create session to store user data
