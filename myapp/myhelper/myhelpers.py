@@ -86,7 +86,7 @@ def hashpassword (password):
 
 #check password
 def checkpassword(password, hashedpassword):
-    return bcrypt.checkpw(password.encode('utf8'), hashedpassword)
+    return bcrypt.checkpw(password.encode('utf-8'), hashedpassword.encode('utf-8'))
 
 #Generate random number for verification
 def random_digits(n):
