@@ -34,15 +34,15 @@ def login():
                 # Close connection
                 cur.close()
                 # Compare Passwords
-                if myhelpers.checkpassword(password, password_hash):
+                if myhelpers.checkpassword(password.encode('utf-8'), password_hash):
                     # Create session
-                    response.add(location)
-                    session['user'] = response #create session to store user data
+                    data.add(location)
+                    session['user'] = data #create session to store user data
                     session['authication'] = myhelpers.get_uuid_id() #create authication token to be used for future requests
                     return {
                     'message': 'Success',
                     'status': 200,
-                    'response': response,
+                    'response': session['user'],
                     'authication': session['authication']
                  }
     
