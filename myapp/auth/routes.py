@@ -21,18 +21,49 @@ def login():
         password = request.form['password']
         location = myhelpers.userLocation()
 
-
         #login
-        return{
-            'username': username,
-            'password': password,
-            'location': location,
-            'status': 201
-        }
-        
-        
+        try:
+            # Create cursor
+            cur = mysql.connection.cursor()
+            # Get user by username
+            result = cur.execute("SELECT * FROM students WHERE studentid = %s", [username])
+            if result > 0:
+                # Get stored hash
+                data = cur.fetchone()
+                password_hash = data['password']
+                # Close connection
+                cur.close()
+                # Compare Passwords
+                if myhelpers.checkpassword(password.encode('utf-8'), password_hash):
+                    # Create session
+                    response.add(location)
+                    session['user'] = response #create session to store user data
+                    session['authication'] = myhelpers.get_uuid_id() #create authication token to be used for future requests
+                    return {
+                    'message': 'Success',
+                    'status': 200,
+                    'response': response,
+                    'authication': session['authication']
+                 }
+    
+                else:
+                    return {
+                    'message': 'Invalid Password',
+                    'status': 401 
+                 }
+            else:
+                return {
+                'message': 'Error, user not found',
+                'status': 500
+            }
             
-       
+        except Exception as e:
+            return {
+                'error': str(e),
+                'message': 'An error occured',
+                'status': 500
+            }
+            
     else:
         return render_template('pages/login/index.html', name=os.environ['APP_NAME'])
         
