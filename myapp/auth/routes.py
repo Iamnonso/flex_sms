@@ -20,40 +20,17 @@ def login():
         username = request.form['username']
         password = request.form['password']
         location = myhelpers.userLocation()
+
+
+        #login
+        return{
+            'username': username,
+            'password': password,
+            'location': location,
+            'status': 201
+        }
         
         
-        try:
-            cursor = mysql.connection.cursor()
-            cursor.execute('SELECT * FROM students  WHERE studentid= %s', [username])
-            response = cursor.fetchone()
-            cursor.close()
-            if response:
-               if myhelpers.checkpassword(password, response['password']):
-                    response.add(location)
-                    session['user'] = response #create session to store user data
-                    session['authication'] = myhelpers.get_uuid_id() #create authication token to be used for future requests
-                    return {
-                    'message': 'Success',
-                    'status': 200,
-                    'response': response,
-                    'authication': session['authication']
-                 }
-               else:
-                   return {
-                    'message': 'Invalid Password',
-                    'status': 401
-                    
-                 }
-            else:
-                return {
-                'message': 'Error fetching data!',
-                'status': 500
-            }
-        except:
-            return {
-                'message': "an unexpect error occured",
-                'status': 500
-            }
             
        
     else:
