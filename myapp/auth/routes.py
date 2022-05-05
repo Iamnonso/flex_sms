@@ -39,6 +39,13 @@ def login():
                     data['location'] = location
                     session['user'] = data #create session to store user data
                     session['authication'] = myhelpers.get_uuid_id() #create authication token to be used for future requests
+                    
+                    # Update user login data
+                    cur = mysql.connection.cursor()
+                    cur.execute("UPDATE student_acct SET lastlogin = %s, ipaddress= %s, region = %s, country = %s, state = %s  WHERE userid = %s", [myhelpers.get_time(), myhelpers.userLocation()['ip'], myhelpers.userLocation()['region'], myhelpers.userLocation()['country'], myhelpers.userLocation()['city'],  username])
+                    mysql.connection.commit()
+                    cur.close()
+
                     return {
                     'message': 'Success',
                     'status': 200,

@@ -8,6 +8,7 @@ import os
 from random import randint
 import africastalking
 import uuid
+import datetime
 
 #User location
 def userLocation():
@@ -122,5 +123,7 @@ def verify_with_call(telephone):
 def get_uuid_id():
     return str(uuid.uuid4())
 
+def get_time():
+    return str(datetime.datetime.now())
 
-#print(hashpassword('123456789'))
+print(userLocation())
