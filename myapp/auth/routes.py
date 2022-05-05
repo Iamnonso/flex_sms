@@ -26,7 +26,7 @@ def login():
             # Create cursor
             cur = mysql.connection.cursor()
             # Get user by username
-            result = cur.execute("SELECT * FROM students WHERE studentid = %s", [username])
+            result = cur.execute("SELECT * FROM students INNER JOIN student_acct ON students.studentid=student_acct.userid WHERE students.studentid = %s", [username])
             if result > 0:
                 # Get stored hash
                 data = cur.fetchone()
@@ -34,7 +34,7 @@ def login():
                 # Close connection
                 cur.close()
                 # Compare Passwords
-                if myhelpers.checkpassword(password.encode('utf-8'), password_hash):
+                if myhelpers.checkpassword(password, password_hash):
                     # Create session
                     response.add(location)
                     session['user'] = response #create session to store user data
